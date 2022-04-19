@@ -1,0 +1,30 @@
+.quick-menu-btn {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+}
+
+.quick-menu-btn:hover {
+  background: #f5f5f5;
+}
+
+.quick-menu-btn-child {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0px;
+  height: 42px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.tittle-detail-more {
+  color: #000000;
+  padding-bottom: 3px;
+}
+
+.menu-item-detail {
+  min-width: 280px;
+}
+.active {
+  background: #f5f5f5;
+}

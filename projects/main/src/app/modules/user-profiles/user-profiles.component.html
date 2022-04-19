@@ -1,0 +1,25 @@
+<vnpt-layout>
+    <vnpt-layout>
+      <vnpt-sider vCollapsible [(vCollapsed)]="menuVisible" vBreakpoint="lg" [vCollapsedWidth]="0" [vWidth]="300" class="vertical-submenu">
+          <div vnpt-row  [vGutter]="20" class="user-info-wrapper">
+            <div vnpt-col  [vSpan]="6" class="avatar-wrapper">
+              <vnpt-avatar [vSize]="56" vText="TH" class="avatar"></vnpt-avatar>
+              <div class="edit-avatar"><button vnpt-button vType="text" vShape="circle" class="edit-btn"><i vnpt-icon vType="Upload"></i></button></div>
+            </div>
+            <div vnpt-col [vSpan]="18">
+              <div class="pt-1 pb-1 truncate"><strong title="Hadongtung@gmail.com">Hadongtung@gmail.com</strong></div>
+              <div class="roleTxt" vnpt-typography vType="secondary">Administrator</div>
+            </div>
+  
+          </div>
+          <submenu-comp [menuConfig]="menuConfig" (itemClick)="itemClick()"></submenu-comp>
+      </vnpt-sider>
+      <vnpt-content class="right-content" >
+          <button vnpt-button vType="default" title="Đóng/Mở Menu" (click)="tonggleMenu()" class="menu-tonggle-btn">
+            <i *ngIf="!menuVisible" vnpt-icon vType="IncreaseIndentMirrored" [vColor]="'primary'"></i>
+            <i *ngIf="menuVisible" vnpt-icon vType="NumberedListText" [vColor]="'primary'"></i>
+          </button>
+        <router-outlet></router-outlet>
+      </vnpt-content>
+    </vnpt-layout>
+  </vnpt-layout>

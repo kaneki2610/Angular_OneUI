@@ -1,0 +1,3 @@
+<button *ngIf="type==='lg'" vnpt-button vType="text" class="toolbar-btn" title="{{title}}"><i vnpt-icon [vSrc]="iconfont? '': (icon)" [vType]="iconfont?icon:''" [vSize]="'lg'"></i><span>{{title}}</span></button>
+<button *ngIf="type==='md'" vnpt-button vType="text" class="toolbar-btn" title="{{title}}"><i vnpt-icon [vSrc]="iconfont? '': (icon)" [vType]="iconfont?icon:''"></i><span>{{title}}</span></button>
+<button *ngIf="type==='sm'" vnpt-button vType="text" class="toolbar-btn-sm" title="{{title}}"><i vnpt-icon [vSrc]="iconfont? '': (icon)" [vType]="iconfont?icon:''" [vSize]="'xs'"></i><span>{{title}}</span></button>

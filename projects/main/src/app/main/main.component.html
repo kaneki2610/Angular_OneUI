@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div class="main-wrapper ml-0 ml-md-8">
+    <div class="quick-menu-sidebar pt-3 d-none d-md-block">
+        <app-quick-menu [quickmenu]="menuConfig"></app-quick-menu>
+    </div>
+    <div class="main-content">
+        <breadcrumb-app></breadcrumb-app>
+        <div class="main-router">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

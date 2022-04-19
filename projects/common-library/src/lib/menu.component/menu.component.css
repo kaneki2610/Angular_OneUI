@@ -1,0 +1,26 @@
+:host ::ng-deep .oneui-menu-inline .oneui-menu-item {
+  margin-bottom: 15px;
+  margin-top: 6px;
+  padding-right: 35px;
+  padding-left: 20px !important;
+}
+
+:host ::ng-deep .oneui-menu-inline .oneui-menu-item i {
+  margin-right: 12px;
+}
+
+:host
+  ::ng-deep
+  .oneui-menu:not(.oneui-menu-horizontal)
+  .oneui-menu-item-selected {
+  background-color: #e7e8e9;
+}
+
+:host
+  ::ng-deep
+  .oneui-menu-inline
+  > .oneui-menu-submenu
+  > .oneui-menu-submenu-title {
+  font-weight: 600;
+  padding-left: 10px !important;
+}

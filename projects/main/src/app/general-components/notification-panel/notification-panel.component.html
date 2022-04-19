@@ -1,0 +1,22 @@
+<div class="drawer-header">
+  <h4 vnpt-typography >Thông báo</h4>
+</div>
+
+
+<div class="notification-main">
+<vnpt-list class="notification-list" >
+<vnpt-list-item  vItemLayout="horizontal" vLoading ="loading" class="notification-list-item" *ngFor="let item of listNotificationConfig ; let i=index" (click)="onSelectNotifi(item)">
+<div vnpt-col vSpan="5" class="defaultLeft-avartar" >
+  <vnpt-avatar [vSize]="56"  vText="MK"  class="avatar-icon-item"></vnpt-avatar>
+  <div *ngIf="item.active" class="icon-status-wrapper">
+    <i vnpt-icon class="icon-status-active" [vType]="'SkypeCircleCheck'" [vColor]="'success'" [vSize] = "'sm'"></i>
+  </div>
+</div>
+<div vnpt-col vSpan="19" class="defaultRight-avartar">
+  <div class="time-receive-item" vnpt-typography vType="secondary">{{item.created_at |changeDateTime}}</div>
+  <h5 vnpt-typography class="notification-title">{{item.title}}</h5>
+  <div class="content-detail-item" vnpt-typography vType="secondary">{{item.detail}}</div>
+</div>
+</vnpt-list-item>
+</vnpt-list>
+</div>

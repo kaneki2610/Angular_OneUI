@@ -1,0 +1,16 @@
+<button *ngIf="text; else notext" vnpt-button vType="text" vnpt-tooltip [vTooltipTitle]="title" [disabled]="disabled"
+  class="action-item-btn">
+  <i *ngIf="iconSrc; else elseSrc" vnpt-icon [vSrc]="iconSrc" [vColor]="color"></i>
+  <ng-template #elseSrc>
+    <i *ngIf="icon" vnpt-icon [vType]="icon" [vColor]="color"></i>
+  </ng-template>
+  <span>{{ text }}</span>
+</button>
+<ng-template #notext>
+  <button vnpt-button vType="text" vnpt-tooltip [vTooltipTitle]="title" [disabled]="disabled" class="action-item-btn">
+    <i *ngIf="iconSrc; else elseSrc" vnpt-icon [vSrc]="iconSrc" [vColor]="color"></i>
+    <ng-template #elseSrc>
+      <i *ngIf="icon" vnpt-icon [vType]="icon" [vColor]="color"></i>
+    </ng-template>
+  </button>
+</ng-template>

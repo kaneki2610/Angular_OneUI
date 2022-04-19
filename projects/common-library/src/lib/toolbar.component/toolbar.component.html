@@ -1,0 +1,37 @@
+<vnpt-affix *ngIf="fixAtTop; else elseFixAtTop" [vOffsetTop]="fixAtTop">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</vnpt-affix>
+<ng-template #elseFixAtTop>
+  <vnpt-affix *ngIf="fixAtBottom; else default" [vOffsetBottom]="fixAtBottom">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </vnpt-affix>
+</ng-template>
+
+<ng-template #default>
+  <vnpt-affix [vOffsetTop]="85">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </vnpt-affix>
+</ng-template>
+
+<ng-template #content>
+  <div vnpt-row [ngClass]="{'toolbar-wrapper':true,'collapse':isCollapse}" [ngStyle]="{'background-color':bgColor?bgColor:''}">
+    <div vnpt-col [vSpan]="24">
+      <ng-container *ngFor="let item of config.slice(0, sliceNum); let i = index">
+        <toolbar-item *ngIf="item.title || item.icon" [title]="item.title" [icon]="item.icon" [iconfont]="item.iconfont" [type]="isCollapse?'sm':'md'" (click)="onItemClick(item)"></toolbar-item>
+        <vnpt-divider *ngIf="!item.title && !item.icon && screenSize>992" vType="vertical"></vnpt-divider>
+      </ng-container>
+      <ng-content></ng-content>
+      <button *ngIf="config.length > sliceNum" vnpt-button vType="text" class="toolbar-more-btn" vnpt-dropdown [vDropdownMenu]="more"><i vnpt-icon [vType]="'BulletedListBullet'" [vSize]="'md'"></i></button>
+      <vnpt-dropdown-menu  #more="vDropdownMenu">
+        <ul vnpt-menu vSelectable>
+          <li *ngFor="let item of config.slice(sliceNum, config.length); let i = index" vnpt-menu-item style="text-align: center;">
+            <toolbar-item *ngIf="item.title || item.icon" [title]="item.title" [icon]="item.icon" [iconfont]="item.iconfont" [type]="isCollapse?'sm':'md'" (click)="onItemClick(item)"></toolbar-item>
+          </li>
+        </ul>
+      </vnpt-dropdown-menu>
+
+      <button *ngIf="!isCollapse" vnpt-button vType="text" class="toolbar-btn-collapse" title="Thu gọn" (click)="tonggleCollapse();"><i vnpt-icon vType="ChevronUp" [vSize]="'xs'" [vColor]="'primary'"></i></button>
+      <button *ngIf="isCollapse" vnpt-button vType="text" class="toolbar-btn-collapse" title="Mở rộng" (click)="tonggleCollapse();"><i vnpt-icon vType="ChevronDown" [vSize]="'xs'" [vColor]="'primary'"></i></button>
+    </div>
+  </div>
+</ng-template>

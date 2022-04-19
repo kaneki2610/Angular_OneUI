@@ -1,0 +1,38 @@
+<ul *ngIf="menuConfig && menuConfig.length>0" vnpt-menu vMode="inline" style="padding: 10px 2px 20px 20px;">
+  <ng-container *ngFor="let menu of menuConfig; let i = index">
+    <li *ngIf="menu.childs && menu.childs.length > 0" vnpt-submenu [vTitle]="menu.title"
+      [vIcon]="menu.iconfont?menu.icon:''" vOpen>
+      <ul>
+        <ng-container *ngFor="let item of menu.childs; let j = index">
+          <li *ngIf="item.routerLink" vnpt-menu-item routerLink="{{item.routerLink}}" title="{{item.title}}"
+            [vSelected]="activeRouter|activeUrlCheck:item.routerLink" (click)="onClick(item)"><i *ngIf="item.icon" vnpt-icon
+              [vSrc]="item.iconfont? '':(item.icon)" [vType]="item.iconfont? item.icon:''"
+              [vSize]="'xs'"></i>{{item.title}}</li>
+          <li *ngIf="item.vRouterLink" vnpt-menu-item vRouterLink="{{item.vRouterLink}}" title="{{item.title}}"
+            [vSelected]="activeRouter|activeUrlCheck:item.routerLink" (click)="onClick(item)"><i *ngIf="item.icon" vnpt-icon
+              [vSrc]="item.iconfont? '':(item.icon)" [vType]="item.iconfont? item.icon:''"
+              [vSize]="'xs'"></i>{{item.title}}</li>
+          <li *ngIf="item.href" vnpt-menu-item [vSelected]="activeRouter|activeUrlCheck:item.routerLink"><a
+              href="{{item.href}}" title="{{item.title}}" target="_blank"><i *ngIf="item.icon" vnpt-icon
+                [vSrc]="item.iconfont? '':(item.icon)" [vType]="item.iconfont? item.icon:''"
+                [vSize]="'xs'"></i>{{item.title}}</a></li>
+        </ng-container>
+      </ul>
+    </li>
+
+    <ng-container *ngIf="!menuConfig || menuConfig.length<=0">
+      <li *ngIf="menu.routerLink" vnpt-menu-item routerLink="{{menu.routerLink}}" title="{{menu.title}}"
+        [vSelected]="activeRouter|activeUrlCheck:item.routerLink" (click)="onClick(menu)"><i *ngIf="menu.icon" vnpt-icon
+          [vSrc]="menu.iconfont? '':(menu.icon)" [vType]="menu.iconfont? menu.icon:''"
+          [vSize]="'xs'"></i>{{menu.title}}</li>
+      <li *ngIf="menu.vRouterLink" vnpt-menu-item vRouterLink="{{menu.vRouterLink}}" title="{{menu.title}}"
+        [vSelected]="activeRouter|activeUrlCheck:item.routerLink" (click)="onClick(menu)"><i *ngIf="menu.icon" vnpt-icon
+          [vSrc]="menu.iconfont? '':(menu.icon)" [vType]="menu.iconfont? menu.icon:''"
+          [vSize]="'xs'"></i>{{menu.title}}</li>
+      <li *ngIf="menu.href" vnpt-menu-item [vSelected]="activeRouter|activeUrlCheck:item.routerLink"><a
+          href="{{menu.href}}" title="{{menu.title}}" target="_blank"><i *ngIf="menu.icon" vnpt-icon
+            [vSrc]="menu.iconfont? '':(menu.icon)" [vType]="menu.iconfont? menu.icon:''"
+            [vSize]="'xs'"></i>{{menu.title}}</a></li>
+    </ng-container>
+  </ng-container>
+</ul>

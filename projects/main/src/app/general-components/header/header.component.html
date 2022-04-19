@@ -1,0 +1,136 @@
+<header class="header" vnpt-row>
+    <div class="header-left"
+        vnpt-col
+        [vLg]="{ span: 6 }"
+        [vXl]="{ span: 6 }"
+        [vXs]="{ span: 8 }">
+        <!-- <button vnpt-button  vType="text" class="topbar-btn nav-toggle">
+            <span vnpt-icon [vType]="'WaffleOffice365'"></span>
+        </button> -->
+        <button vnpt-button vType="text" class="topbar-btn" (click)="openLeftMenu()" >
+            <i vnpt-icon vType="WaffleOffice365"></i>
+          </button>
+        <a routerLink="/" class="header-logo pl-0 pl-md-1">
+            <vnpt-logo [vColor]="'#fff'" [vTitle]="'IDG'"
+            [vSize]="{'size':'md', 'liteMode':true}"
+            [vXs]="{'size':'md', 'liteMode':true}"
+            [vMd]="{'size':'md','liteMode':false}"
+            [vLg]="{'size':'md','liteMode':false}"
+            [vXl]="{'size':'md','liteMode':false}"
+            [vXxl]="{'size':'md','liteMode':false}"
+            ></vnpt-logo>
+        </a>
+        <vnpt-drawer [vVisible]="showDrawerLeft" [vPlacement]="placementLeft" [vTitle]="leftDrawerTitle"
+            [vMaskStyle]="{ opacity: 0, animation: 'none' }" (vOnClose)="closeLeftMenu()"
+            [vWrapClassName]="'root-menu-wrapper'" [vWidth]="300">
+            <ng-container *vDrawerContent >
+                <root-menu></root-menu>
+            </ng-container>
+        </vnpt-drawer>
+        <ng-template #leftDrawerTitle >
+            <i vnpt-icon vType="WaffleOffice365" [vColor]="'primary '"></i>
+          </ng-template>
+    </div>
+    <div class="header-mid {{visibleMobileSearch ? 'show' : 'hidden'}}"
+        vnpt-col
+        [vLg]="{ span: 9 }"
+        [vXl]="{ span: 9 }"
+        [vXs]="{ span: 0 }" >
+        <vnpt-input-group vSearch vPrefixIcon="Search" class="btn-group-search mt-0 mt-md-2 py-2 py-md-0" >
+            <input type="text" vnpt-input placeholder="Nhập từ khóa để tìm kiếm" class="btninput-detail" />
+        </vnpt-input-group>
+  
+    </div>
+    <div class="header-right"
+        vnpt-col
+        [vLg]="{ span: 9 }"
+        [vXl]="{ span: 9 }"
+        [vXs]="{ span: 16 }">
+  
+        <button vnpt-button vType="text" class="topbar-btn topbar-btn-menu-search" (click)="openMobileSearch()">
+            <i vnpt-icon vType="Search"></i>
+  
+        </button>
+        <button vnpt-button vType="text" class="topbar-btn topbar-btn-menu-more" (click)="openMobileSetting()">
+            <i vnpt-icon vType="More"></i>
+        </button>
+        <div class="d-inline header-menu-dropdown {{visibleMobileSetting ? 'show' : 'hidden'}}" >
+            <button vnpt-button vType="text" title="Hỗ trợ"  (click)="showHelpPanel()" class="topbar-btn topbar-btn-menu-detail mr-0" >
+  
+              <i vnpt-icon vType="Help" [vSize]="'sm'"></i>
+              <span class="text-m">Hướng dẫn</span>
+            </button>
+  
+            <button vnpt-button vType="text" title="Gửi phản hồi"  (click)="showFeedbackPanel()" class="topbar-btn topbar-btn-menu-detail mr-0" >
+  
+              <i vnpt-icon vType="Feedback" [vSize]="'sm'"></i>
+              <span class="text-m">Gửi phản hồi</span>
+            </button>
+  
+            <button vnpt-button vType="text"  title="Thông báo"  (click)="showNotificationPanel()" class="topbar-btn topbar-btn-menu-detail mr-0 mr-md-4" >
+  
+              <i vnpt-icon vType="Ringer" [vSize]="'sm'"></i>
+              <vnpt-badge vDot class="number-badge mt-0 mt-md-2"></vnpt-badge>
+              <span class="text-m ml-2">Thông báo</span>
+  
+            </button>
+  
+        </div>
+        <button vnpt-button vnpt-dropdown vTrigger="click" title="Thông tin tài khoản"  [vDropdownMenu]="userdropdown" vType="text" class="topbar-btn topbar-btn-avatar mr-1 mr-md-2">
+            <vnpt-avatar [vSize]="30" vSrc="http://storage-stagging.vnpt.vn/oneui/docs/imgs/ODTLcjxAfvqbxHnVXCYX.png">
+  
+            </vnpt-avatar>
+        </button>
+  
+        <vnpt-drawer [vVisible]="showDrawerRight" [vPlacement]="placementRight"
+        [vMaskStyle]="{ opacity: 0, animation: 'none' }" [vWidth]="485" [vOffsetY]="42" (vOnClose)="closeRightMenu()" [vFooter]="tplFooter">
+        <ng-container *vDrawerContent>
+          <ng-container [ngSwitch]="rightPanelMode">
+            <app-notification-panel *ngSwitchCase="1"></app-notification-panel>
+            <app-setting-panel *ngSwitchCase="2"></app-setting-panel>
+            <app-notification-panel *ngSwitchDefault>...</app-notification-panel>
+          </ng-container>
+        </ng-container>
+      </vnpt-drawer>
+      <ng-template #tplFooter>
+        <a href="#" class="all-notification">Xem tất cả thông báo <span vnpt-icon vType="PageRight"></span></a>
+      </ng-template>
+  
+    </div>
+  
+  </header>
+  <!---Dropdown User-->
+  <vnpt-dropdown-menu #userdropdown="vDropdownMenu" >
+    <ul vnpt-menu  >
+        <li vnpt-menu-item>
+            <div class="user-info">
+                <vnpt-avatar [vSize]="56" class="menu-avatar"
+                    vSrc="http://storage-stagging.vnpt.vn/oneui/docs/imgs/ODTLcjxAfvqbxHnVXCYX.png"></vnpt-avatar>
+                <div class="username">
+                    <h5 vnpt-typography class="truncate">Uoc Nguyen</h5>
+                    <span vnpt-typography vType="secondary" class="email">uocnv@vnpt.vn</span>
+                </div>
+            </div>
+        </li>
+        <li vnpt-menu-divider></li>
+        <li vnpt-menu-item class="py-3">
+          <a href="javascript:void(0)" (click)="settingAcountClick()"><i vnpt-icon vType="Contact"></i>Thiết
+            lập tài khoản</a>
+        </li>
+        <li vnpt-menu-item class="py-3">
+            <a href="javascript:void(0);" (click)="logout()"><i vnpt-icon vType="SignOut"></i>Thoát</a>
+        </li>
+    </ul>
+  </vnpt-dropdown-menu>
+  
+  <!---End User-->
+  
+  <!---End User-->
+  
+  <div class="overlay-common {{visibleMobileSetting ? 'show' : 'hidden'}} {{visibleMobileSearch ? 'show' : 'hidden' }}" (click)="closeMobileAllMenu()">
+  </div>
+
+  <div *ngIf="loadingVisible" class="main-loading-wrapper">
+    <vnpt-spin vSimple class="spin-icon" vTip="Loading..."></vnpt-spin>
+  </div>
+  

@@ -1,0 +1,287 @@
+//custom css 
+
+.oneui-badge-count{
+    height: 14px;
+    line-height: 14px;
+    box-shadow: none;
+}
+.oneui-badge-dot{
+    bottom: 0px;
+    position: absolute !important;
+    right: 0px;
+    background-color: @green-base;
+    top: 0px !important;
+}
+
+.oneui-drawer-header{
+    border-bottom: 1px solid @gray-5;
+}
+
+.vertical-submenu{
+    height: calc(100vh - 85px);
+    overflow: hidden;
+    border-right: solid 1px fade(#000,10%);
+}
+
+.right-content{
+    height: calc(100vh - 85px);
+    overflow-y: auto;
+}
+
+
+.vertical-submenu::-webkit-scrollbar-track {
+    background-color:transparent;
+}
+
+.vertical-submenu::-webkit-scrollbar {
+    width: 4px;
+    background-color:transparent;
+}
+
+.vertical-submenu::-webkit-scrollbar-thumb {
+    background-color: fade(#000,10%);
+    border: none;
+}
+
+.main-wrapper{
+    padding-top: 42px;
+}
+.list-status{
+    .item{
+        display: inline-block;
+        margin-right: @padding-3;
+        &:last-child{
+            margin-right: 0px;
+        }
+    }
+}
+.box-top-search{
+    display: flex;
+    width: 100%;
+    .search-btn{
+        margin-left: @padding-1;
+    }
+    @media(max-width: 991px){
+        display: block;
+        .input-search{
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.featured{
+    color: @gray-8;
+    &.active{
+        color: @yellow-base;
+    }
+}
+.table-content{
+    .oneui-table-content{
+        overflow: auto;
+    }
+    th{
+        white-space: nowrap;
+    }
+    .table-note{
+        color: @gray-8;
+        font-size: @font-size-2;
+    }
+}
+
+
+
+.table-info{
+    .key{
+        background: @gray-2;
+    }
+    @media(max-width:768px){
+        td,table,tr,thead,tbody{
+            width: 100%;
+            display: block;
+        }
+        .key{
+            font-weight: @typography-title-font-weight;
+        }
+    }
+}
+
+.list-files{
+    .item{
+        display: inline-block;
+        max-width: 360px;
+        width: 100%;
+        
+    }
+    .file-inner{
+        
+        border: 1px solid @gray-5;
+        padding: @padding-2;
+        display: flex;
+        .icon{
+            width: 48px;
+            height: 48px;
+            img{
+                width: 48px;
+                height: 48px;
+                object-fit: contain;
+            }
+        }
+    }
+    .acts{
+        white-space: nowrap;
+        .ms-Icon{
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+            img{
+                width: 16px;
+                height: 16px;
+                object-fit: contain;
+            }
+        }
+    }
+    .text-m{
+        width: 100%;
+    }
+    @media(max-width:991px){
+        .item{
+            max-width: 100%;
+        }
+        .file-inner{
+            .icon{
+                width: 32px;
+                height: 32px;
+                img{
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+        
+    }
+}
+
+
+.overlay-common{
+    display: none;
+    position: fixed;
+    top:0px;
+    right:0px;
+    left:0px;
+    bottom: 0px;
+    z-index: 99;
+    &.show{
+        display: block;
+    }
+
+}
+
+
+.oneui-picker{
+    display: flex;
+}
+
+.info-row{
+	display: table;
+	width: 100%;
+	.key,.value{
+		display: table-cell;
+		vertical-align: top;
+
+		
+	}
+	.key{
+		padding-right: 2px;
+		padding-top: 7px;
+		width: 110px;
+		&.w120{
+			width: 120px;
+		}
+		&.w130{
+			width: 130px;
+		}
+		&.w140{
+			width: 140px;
+		}
+		&.w150{
+			width: 150px;
+		}
+		&.w160{
+			width: 160px;
+		}
+	}
+	.value{
+		padding-left: 5px;
+	}
+
+	@media(max-width:991px){
+		margin-bottom: 15px;
+		.key,.value{
+			display: block;
+			padding: 0px;
+
+		}
+		.key{
+			margin-bottom: 3px;
+		}
+	}
+
+}
+
+
+.bg-gray{
+    background-color: @gray-3 !important;
+}
+.oneui-tabs-top > .oneui-tabs-nav, .oneui-tabs-bottom > .oneui-tabs-nav, .oneui-tabs-top > div > .oneui-tabs-nav, .oneui-tabs-bottom > div > .oneui-tabs-nav{
+    margin-bottom: @padding-6;
+}
+@media(max-width:991px){
+    .oneui-table-pagination.oneui-pagination{
+        overflow-x: auto;
+        white-space: nowrap;
+        overflow-y: hidden;
+        display: block;
+    }
+    .top-info{
+        .box-top-search{
+            margin-top: 20px;
+
+        }
+    }
+    
+    .sidebar-toggle-menu{
+        left: 0px;
+        box-shadow: 2px 0 8px fade(#000,15%);
+    }
+    
+}
+
+.@{btn-prefix-cls}{
+    &-sm{
+        .@{iconfont-css-prefix}{
+            font-size: @font-size-base;
+        }
+    }   
+}
+
+.menu-tonggle-btn {
+    position: fixed;
+    top: 85px;
+    width: 42px;
+    border: none;
+    box-shadow: none;
+    z-index: 99;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    margin-right: 14px;
+    background-color: transparent;
+}
+
+.menu-tonggle-btn:hover {
+    background-color: #fafafa;  
+}
+.menu-tonggle-btn:hover i {
+    color: #092c4c !important;
+}

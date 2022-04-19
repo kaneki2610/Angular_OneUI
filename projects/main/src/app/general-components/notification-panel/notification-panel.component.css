@@ -1,0 +1,54 @@
+.drawer-header {
+  position: fixed;
+  background: #ffffff;
+  z-index: 9;
+  width: 100%;
+  top: 0;
+  padding: 20px 30px 3px 6px;
+  border-bottom: solid 1px #0000001a;
+}
+
+.notification-main {
+  padding-top: 44px;
+}
+.content-detail-item {
+  font-size: 12px;
+}
+.defaultLeft-avartar {
+  text-align: center;
+  padding-top: 3px;
+}
+.time-receive-item {
+  text-align: right;
+  float: right;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.icon-status-active {
+  position: absolute;
+  top: 10px;
+  right: 3px;
+}
+.notification-list-item {
+  border-bottom: none !important;
+}
+.avatar-icon-item {
+  background: #1363b9;
+  color: #fff;
+}
+
+.icon-status-wrapper {
+  background-color: #ffffff;
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  left: 56px;
+  border-radius: 50%;
+}
+
+.notification-title {
+  margin: 15px 20px 3px 0px;
+}

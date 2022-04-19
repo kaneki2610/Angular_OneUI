@@ -1,0 +1,43 @@
+<vnpt-page>
+  <vnpt-layout [vType]="'compact'">
+    <vnpt-main-content [title]="'Đăng nhập và bảo mật'">
+      <div vnpt-row class="px-3 px-sm-6 info-area">
+        <div vnpt-col [vSpan]="24">
+            <div class="info-item">
+              <h5 vnpt-typography>Mật khẩu</h5>
+              <p *ngIf="!changePasswordPlag" vnpt-typography>**********<button vnpt-button vType="primary" class="float-right" (click)="enableChangePassword(true)">Đổi mật khẩu</button></p>
+              <p *ngIf="changePasswordPlag" vnpt-typography>
+                <input type="text" vnpt-input  placeholder="Mật khẩu hiện tại" class="mb-3"/>
+                <input type="password" vnpt-input placeholder="Mật khẩu mới" class="mb-3"/>
+                <input type="password" vnpt-input placeholder="Nhập lại mật khẩu mới" class="mb-4"/>
+                <button vnpt-button vType="primary" class="mr-3">Cập nhật Mật khẩu</button><button vnpt-button vType="danger" (click)="enableChangePassword(false)">Hủy</button>
+
+              </p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Email Xác thực</h5>
+              <p vnpt-typography>hadongtung@gmail.com<button vnpt-button vType="default" class="float-right">Sửa</button></p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Điện thoại xác thực</h5>
+              <p vnpt-typography>0945336566<button vnpt-button vType="default" class="float-right">Sửa</button></p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Đăng xuất trên mọi thiết bị</h5>
+              <p vnpt-typography>
+                Bạn đã đăng nhập trên thiết bị dùng chung nhưng quên đăng xuất? Hãy kết thúc tất cả các phiên bằng cách đăng xuất trên mọi thiết bị.
+                <button vnpt-button vType="default" vBlock class="mt-3">Đăng xuất trên mọi thiết bị</button>
+              </p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Xóa tài khoản</h5>
+              <p vnpt-typography>
+                Sau khi xóa tài khoản, bạn sẽ không thể truy cập các thiết kế của mình hay đăng nhập vào hệ thống được nữa.
+                <button vnpt-button vType="default" vDanger vBlock class="mt-3">Xóa tài khoản</button>
+              </p>
+            </div>
+        </div>
+      </div>
+    </vnpt-main-content>
+  </vnpt-layout>
+</vnpt-page>

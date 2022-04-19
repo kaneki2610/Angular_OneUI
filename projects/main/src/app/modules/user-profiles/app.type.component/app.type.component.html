@@ -1,0 +1,125 @@
+<vnpt-page [close]="false">
+  <vnpt-layout [vType]="'compact'" class="mt-2 mt-md-6 px-3 px-md-8 px-lg-11">
+    <div vnpt-row>
+      <div vnpt-col vSpan="24">
+        <vnpt-card [vBordered]="false">
+          <vnpt-card-meta
+            vTitle="Get App Type All"
+            class="oneui-card-head-title"
+          ></vnpt-card-meta>
+          <vnpt-table #rowSelectionTable [vData]="listOfData" vShowPagination (vCurrentPageDataChange)="onCurrentPageDataChange($event)">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Mô tả</th>
+                <th>Ngày giờ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of rowSelectionTable.data">
+                <td>
+                  <a>{{ data.id }}</a>
+                </td>
+                <td>
+                  <a>{{ data.name }}</a>
+                </td>
+                <td>
+                  <a>{{ data.description }}</a>
+                </td>
+                <td>{{ data.created_at | date: "hh:mm dd/MM/yyyy" }}</td>
+              </tr>
+            </tbody>
+          </vnpt-table>
+        </vnpt-card>
+      </div>
+    </div>
+  </vnpt-layout>
+
+  <vnpt-layout [vType]="'compact'" class="mt-2 mt-md-6 px-3 px-md-8 px-lg-11">
+    <form
+      vnpt-form
+      [formGroup]="validateForm"
+      [vLayout]="'vertical'"
+      (ngSubmit)="submitForm()"
+    >
+      <vnpt-form-item>
+        <vnpt-form-label [vSpan]="7" vRequired>ID</vnpt-form-label>
+        <vnpt-form-control [vSpan]="12" vErrorTip="ID Rỗng">
+          <input
+            formControlName="id"
+            vnpt-input
+            rows="2"
+            placeholder="Vui lòng nhập ID"
+          />
+        </vnpt-form-control>
+      </vnpt-form-item>
+
+      <vnpt-form-item>
+        <vnpt-form-label [vSpan]="7" vRequired>Tên</vnpt-form-label>
+        <vnpt-form-control [vSpan]="12" vErrorTip="Tên app rỗng">
+          <input
+            formControlName="name"
+            vnpt-input
+            rows="2"
+            placeholder="Vui lòng nhập tên"
+          />
+        </vnpt-form-control>
+      </vnpt-form-item>
+
+      <vnpt-form-item>
+        <vnpt-form-label [vSpan]="7">Mô tả</vnpt-form-label>
+        <vnpt-form-control [vSpan]="12">
+          <input
+            formControlName="description"
+            vnpt-input
+            rows="2"
+            placeholder="Vui lòng nhập mô tả"
+          />
+        </vnpt-form-control>
+      </vnpt-form-item>
+      
+      <vnpt-select
+        [(ngModel)]="groupSelectedValue"
+        vPlaceHolder="Vui lòng chọn group"
+        formControlName = "groupSelect"
+        (ngModelChange)="groupSelectChange($event)"
+      >
+        <vnpt-option
+          *ngFor="let option of groupOptionList"
+          [vValue]="option"
+          [vLabel]="option.label"
+        ></vnpt-option>
+      </vnpt-select>
+
+      <vnpt-select
+        formControlName = "listAppSelect"
+        [vMaxTagCount]="3"
+        [vMaxTagPlaceholder]="tagPlaceHolder"
+        vMode="multiple"
+        class="vnpt-select-application"
+        vPlaceHolder="Vui lòng chọn một hoặc nhiều app"
+        [(ngModel)]="listOfSelectedValue"
+        (ngModelChange)="listAppSelectChange($event)"
+      >
+        <vnpt-option
+          *ngFor="let item of listApp"
+          [vLabel]="item.name"
+          [vValue]="item.id"
+        ></vnpt-option>
+      </vnpt-select>
+      <ng-template #tagPlaceHolder let-selectedList>
+        and {{ selectedList.length }} more selected
+      </ng-template>
+
+      <vnpt-form-item vnpt-row>
+        <vnpt-form-control>
+          <button vnpt-button vType="primary" (onClick)="submitData()">Tạo mới</button>
+        </vnpt-form-control>
+      </vnpt-form-item>
+    </form>
+    <vnpt-select [(ngModel)]="selectedProvince" (ngModelChange)="provinceChange($event)">
+      <vnpt-option *ngFor="let p of provinceData" [vValue]="p" [vLabel]="p"></vnpt-option>
+    </vnpt-select>
+  </vnpt-layout>
+</vnpt-page>

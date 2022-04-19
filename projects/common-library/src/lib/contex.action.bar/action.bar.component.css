@@ -1,0 +1,15 @@
+.context-actionbar-wrapper {
+  background-color: #fafafa;
+  z-index: 99;
+  padding: 4px 30px;
+}
+
+.oneui-dropdown-trigger > .ms-Icon {
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 576px) {
+  .context-actionbar-wrapper {
+    padding: 4px 10px;
+  }
+}

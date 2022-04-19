@@ -1,0 +1,35 @@
+<vnpt-affix *ngIf="fixAtTop; else elseFixAtTop" [vOffsetTop]="fixAtTop">
+  <div vnpt-row class="context-actionbar-wrapper" [ngStyle]="{'background-color':bgColor?bgColor:''}">
+    <div vnpt-col vXs="14" vSm="14" vMd="14" vLg="18" vXl="18" class="actionbar-left">
+      <ng-container *ngTemplateOutlet="left"></ng-container>
+    </div>
+    <div vnpt-col vXs="10" vSm="10" vMd="10" vLg="6" vXl="6" style="text-align: right" class="actionbar-right">
+      <ng-container *ngTemplateOutlet="right"></ng-container>
+    </div>
+  </div>
+</vnpt-affix>
+<ng-template #elseFixAtTop>
+  <vnpt-affix *ngIf="fixAtBottom; else default" [vOffsetBottom]="fixAtBottom">
+    <div vnpt-row class="context-actionbar-wrapper">
+      <div vnpt-col vXs="14" vSm="14" vMd="14" vLg="18" vXl="18" class="actionbar-left">
+        <ng-container *ngTemplateOutlet="left"></ng-container>
+      </div>
+      <div vnpt-col vXs="10" vSm="10" vMd="10" vLg="6" vXl="6" style="text-align: right" class="actionbar-right">
+        <ng-container *ngTemplateOutlet="right"></ng-container>
+      </div>
+    </div>
+  </vnpt-affix>
+</ng-template>
+
+<ng-template #default>
+  <vnpt-affix [vOffsetTop]="85">
+    <div vnpt-row class="context-actionbar-wrapper">
+      <div vnpt-col vXs="14" vSm="14" vMd="14" vLg="18" vXl="18" class="actionbar-left">
+        <ng-container *ngTemplateOutlet="left"></ng-container>
+      </div>
+      <div vnpt-col vXs="10" vSm="10" vMd="10" vLg="6" vXl="6" style="text-align: right" class="actionbar-right">
+        <ng-container *ngTemplateOutlet="right"></ng-container>
+      </div>
+    </div>
+  </vnpt-affix>
+</ng-template>

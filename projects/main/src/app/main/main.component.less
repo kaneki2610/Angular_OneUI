@@ -1,0 +1,54 @@
+.quick-menu-sidebar{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 49px;
+    top: 42px;
+    left: 0;
+    bottom: 0;
+    padding-top: 15px;
+
+}
+.vertical-submenu:hover {
+    overflow-y: auto;   
+}
+
+.vertical-submenu::-webkit-scrollbar-track {
+    background-color:transparent;
+}
+
+.vertical-submenu::-webkit-scrollbar {
+    width: 4px;
+    background-color:transparent;
+}
+
+.vertical-submenu::-webkit-scrollbar-thumb {
+    background-color: fade(#000,10%);
+    border: none;
+}
+
+.right-content {
+    height: 100%;
+    overflow-y: auto;
+}
+.top-bar{
+    background-color: #fff;
+    padding:0px 14px 0px 0px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    
+}
+
+@media only screen and (max-width: 576px) {
+    :host ::ng-deep .actionbar-left {
+        padding-left: 30px;
+    }
+
+    .vertical-submenu {
+        position: fixed;
+        z-index: 99;
+        padding-top: 20px;
+        /* top: 130px; */
+        box-shadow: 2px 12px 12px 0px rgb(#000, 8%);
+    }
+}

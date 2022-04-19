@@ -1,0 +1,82 @@
+<div class="login-page pt-xxl-3 pt-xl-3 pt-lg-5 pt-md-7 pt-sm-5 pt-3">
+    <div vnpt-row vAlign="middle" class="pt-xxl-11 pt-xl-9 pt-lg-9 pt-md-9 pt-sm-7 pt-5">
+      <div vnpt-col [vXXl]="{ span: 10, offset: 7 }" [vXl]="{ span: 12, offset: 6 }" [vLg]="{ span: 16, offset: 4 }"
+        [vSm]="{ span: 18, offset: 3 }" [vXs]="{ span: 22, offset: 1 }"
+        class="login-panel mt-xxl-11 mt-xl-11 mt-lg-9 mt-md-7 mt-sm-7 mt-5">
+        <div class="login-content">
+          <div class="header-logo">
+            <div>
+              <vnpt-logo [vColor]="'#1363B9'" [vTitle]="'OneUI'" [vSize]="{'size':'lg'}"></vnpt-logo>
+            </div>
+          </div>
+          <div class="login-content-main">
+            <div class="login-title">
+              <h5 vnpt-typography>Đăng nhập hệ thống</h5>
+            </div>
+            <vnpt-alert *ngIf="errorMsg" vType="error" vShowIcon [vMessage]="errorMsg"></vnpt-alert>
+            <div class="content-main">
+              <form vnpt-form class="login-form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                <vnpt-form-item>
+                  <vnpt-form-control vErrorTip="Tên đăng nhập không được để trống">
+                    <vnpt-input-group [vSuffix]="inputClearTpl" [vPrefix]="prefixTemplateUser" class="input-style">
+                      <input vnpt-input class="form-control" formControlName="username" name="username" type="text"
+                        id="username" placeholder="Số điện thoại hoặc email đăng nhập (demo - demo)" autofocus />
+                    </vnpt-input-group>
+                    <ng-template #prefixTemplateUser>
+                      <i vnpt-icon class="icon-prefix" [vSrc]="'/assets/user-locked.png'" [vSize]="'xs'"></i>
+                    </ng-template>
+                    <ng-template #inputClearTpl><i vnpt-icon class="oneui-input-clear-icon" vType="StatusErrorFull"
+                        *ngIf="inputValue" (click)="inputValue = null"></i></ng-template>
+                  </vnpt-form-control>
+                </vnpt-form-item>
+                <vnpt-form-item>
+                  <vnpt-form-control vErrorTip="Mật khẩu không được để trống">
+                    <vnpt-input-group [vPrefix]="prefixTemplatePass" [vSuffix]="suffixTemplatePass" class="input-style">
+                      <input class="form-control" [type]="passwordVisible ? 'text' : 'password'" vnpt-input
+                        formControlName="password" placeholder="********" />
+                    </vnpt-input-group>
+  
+                    <ng-template #suffixTemplatePass>
+                      <i vnpt-icon (click)="passwordVisible = !passwordVisible" [vSrc]="
+                          passwordVisible
+                            ? ('/assets/password-reset.png')
+                            : ('/assets/show-pass.png')
+                        " [vSize]="'xs'"></i>
+                    </ng-template>
+                    <ng-template #prefixTemplatePass>
+                      <i vnpt-icon class="icon-prefix" [vSrc]="'/assets/password.png'" [vSize]="'xs'"></i>
+                    </ng-template>
+                  </vnpt-form-control>
+                </vnpt-form-item>
+                <vnpt-form-item>
+                  <div class="remember-account">
+                    <label vnpt-checkbox>Ghi nhớ tài khoản</label>
+                  </div>
+                </vnpt-form-item>
+  
+                <vnpt-form-item>
+                  <div vnpt-row class="button-submit">
+                    <div vnpt-col [vXXl]="{ span: 6, offset: 18 }" [vXl]="{ span: 6, offset: 18 }"
+                      [vLg]="{ span: 6, offset: 18 }" [vSm]="{ span: 8, offset: 16 }" [vXs]="{ span: 24, offset: 0 }">
+                      <button vnpt-button type="submit" [vLoading]="isLoading" vType="primary" vBlock class="mt-3">
+                        Đăng nhập
+                      </button>
+                    </div>
+                  </div>
+                </vnpt-form-item>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="title-child">
+      <label><a><i>Bạn quên mật khẩu ? Lấy lại mật khẩu</i></a></label>
+    </div>
+  </div>
+  <footer>
+    <a vRouterLink="/policy">Điều khoản sử dụng</a>
+    <vnpt-divider [vType]="'vertical'"></vnpt-divider>
+    <span class="companyname"> Công ty công nghệ thông tin VNPT © 2021 </span>
+  </footer>  

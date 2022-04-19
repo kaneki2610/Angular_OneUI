@@ -1,0 +1,20 @@
+
+
+<vnpt-affix *ngIf="breadcrumbs && breadcrumbs.length > 0" [vOffsetTop]="42">
+    <div class="breadcrumb-wrapper px-3 px-md-6">
+      <vnpt-breadcrumb [vSeparator]="iconTemplate">
+        <vnpt-breadcrumb-item>
+          <a routerLink="/home"><i vnpt-icon vType="Home"></i> Trang chủ</a>
+        </vnpt-breadcrumb-item>
+        <vnpt-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs; let i = index">
+          <a *ngIf="i < breadcrumbs.length - 1 && breadcrumb.url" [routerLink]="breadcrumb.url">
+            {{ breadcrumb.label }}</a>
+          <span *ngIf="i < breadcrumbs.length - 1 && !breadcrumb.url" class="bread-no-link">
+            {{ breadcrumb.label }}</span>
+          <span *ngIf="i == breadcrumbs.length - 1" class="bread-no-link">
+            {{ breadcrumb.label }}</span>
+        </vnpt-breadcrumb-item>
+      </vnpt-breadcrumb>
+      <ng-template #iconTemplate><i vnpt-icon vType="ChevronRight" [vSize]="'xs'"></i></ng-template>
+    </div>
+</vnpt-affix>

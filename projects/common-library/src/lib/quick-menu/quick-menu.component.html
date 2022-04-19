@@ -1,0 +1,33 @@
+<div *ngIf="quickmenu.length < 10; then displaymenu1; else displaymenu2"></div>
+<ng-template #displaymenu1>
+    <div *ngFor="let item of quickmenu; let i = index"
+        [ngClass]="((activeRouter|activeUrlCheck:item.routerLink) ? 'active':'')">
+        <a [routerLink]="item.routerLink" vnpt-button vType="text" class="quick-menu-btn" vTooltipPlacement="right"
+            vnpt-tooltip [vTooltipTitle]="item.nameMenu">
+            <i vnpt-icon [vSrc]="item.iconName"></i>
+        </a>
+    </div>
+</ng-template>
+<ng-template #displaymenu2>
+    <div *ngFor="let item of quickmenu.slice(0, 10); let i = index"
+        [ngClass]="(((activeRouter|activeUrlCheck:item.routerLink) ) ? 'active':'')">
+        <a [routerLink]="item.routerLink" vnpt-button vType="text" class="quick-menu-btn" vTooltipPlacement="right"
+            vnpt-tooltip [vTooltipTitle]="item.nameMenu">
+            <i vnpt-icon [vSrc]="item.iconName"></i>
+        </a>
+    </div>
+    <a vnpt-button vType="text" class="quick-menu-btn" vTooltipPlacement="right" vnpt-tooltip
+        [vTooltipColor]="'#ffffff'" [vTooltipTitle]="more" href="javascript:void(0)">
+        <i vnpt-icon [vSrc]="'more.png'"></i>
+    </a>
+</ng-template>
+<ng-template #more>
+    <div *ngFor="let item of quickmenu.slice(10, quickmenu.length); let i = index"
+        [ngClass]="((activeRouter|activeUrlCheck:item.routerLink)? 'active':'')">
+        <a vnpt-menu-item [routerLink]="item.routerLink" vnpt-button vBlock vType="text"
+            class="quick-menu-btn-child">
+            <i vnpt-icon [vSrc]="item.iconName" [vSize]="'sm'"></i>
+            <span>{{ item.nameMenu }}</span>
+        </a>
+    </div>
+</ng-template>

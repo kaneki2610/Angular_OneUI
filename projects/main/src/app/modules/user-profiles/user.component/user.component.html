@@ -1,0 +1,45 @@
+<vnpt-page>
+  <vnpt-layout [vType]="'compact'">
+    <vnpt-main-content [title]="'Thông tin tài khoản 11111'">
+      <div vnpt-row class="px-3 px-sm-6 info-area">
+        <div vnpt-col [vSpan]="24">
+            <div class="info-item">
+              <h5 vnpt-typography>Tên</h5>
+              <p vnpt-typography vEditable [vContent]="'Hà Đông Tùng'"></p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Địa chỉ email</h5>
+              <p vnpt-typography vEditable [vContent]="'hadongtung@gmail.com'"></p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Số Điện thoại</h5>
+              <p vnpt-typography vEditable [vContent]="'0983819152'"></p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Địa chỉ</h5>
+              <p vnpt-typography vEditable [vContent]="'10a/72 Tựu Liệt, Văn Điển, Thanh Trì, Hà Nội'"></p>
+            </div>
+            <div class="info-item">
+              <h5 vnpt-typography>Ngôn ngữ</h5>
+              <p>
+                <vnpt-select  ngModel="lucy" style=" width: 100%;">
+                  <vnpt-option vValue="jack" vLabel="Jack" selected></vnpt-option>
+                  <vnpt-option vValue="lucy" vLabel="Tiếng Việt"></vnpt-option>
+                  <vnpt-option vValue="disabled" vLabel="Disabled"></vnpt-option>
+                </vnpt-select>
+              </p>
+            </div>
+        </div>
+      </div>
+      <contexual-actionbar [left]="defaultLeft" [fixAtBottom]="0.1"></contexual-actionbar>
+
+      <ng-template #defaultLeft>
+        <div vnpt-row>
+          <div vnpt-col [vSpan]="24">
+            <button vnpt-button vType="primary">Cập nhật thông tin</button>
+          </div>
+        </div>
+      </ng-template>
+    </vnpt-main-content>
+  </vnpt-layout>
+</vnpt-page>

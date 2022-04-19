@@ -1,0 +1,114 @@
+<vnpt-page [close]="false">
+    <vnpt-layout [vType]="'compact'" class="mt-2 mt-md-6 px-3 px-md-8 px-lg-11">
+        <div vnpt-row [vGutter]="10">
+            <div vnpt-col vLg="14" vSm="24" vXs="24">
+              <vnpt-card [vBordered]="false">
+                <div vnpt-row>
+                  <div vnpt-col [vXXl]="{ span: 5 }" [vXl]="{ span: 5 }" [vLg]="{ span: 5 }" [vMd]="{ span: 5 }"
+                    [vSm]="{ span: 12 }" [vXs]="{ span: 12 }">
+                    <i vnpt-icon vSrc="/assets/maps.png" [vSize]="'xs'"></i>
+                    <vnpt-select ngModel="lucy" vBorderless vAllowClear vPlaceHolder="Khu vực">
+                      <vnpt-option vValue="jack" vLabel="Jack"></vnpt-option>
+                      <vnpt-option vValue="lucy" vLabel="Lucy"></vnpt-option>
+                      <vnpt-option vValue="disabled" vLabel="Disabled" vDisabled></vnpt-option>
+                    </vnpt-select>
+                  </div>
+                  <div vnpt-col [vXXl]="{ span: 5 }" [vXl]="{ span: 5 }" [vLg]="{ span: 5 }" [vMd]="{ span: 5 }"
+                    [vSm]="{ span: 12 }" [vXs]="{ span: 12 }">
+                    <i vnpt-icon vSrc="/assets/service.png" [vSize]="'xs'"></i>
+                    <vnpt-select ngModel="lucy" vBorderless vAllowClear vPlaceHolder="Dịch vụ">
+                      <vnpt-option vValue="jack" vLabel="Jack"></vnpt-option>
+                      <vnpt-option vValue="lucy" vLabel="Lucy"></vnpt-option>
+                      <vnpt-option vValue="disabled" vLabel="Disabled" vDisabled></vnpt-option>
+                    </vnpt-select>
+                  </div>
+                  <div vnpt-col [vXXl]="{ span: 5 }" [vXl]="{ span: 5 }" [vLg]="{ span: 5 }" [vMd]="{ span: 5 }"
+                    [vSm]="{ span: 12 }" [vXs]="{ span: 12 }">
+                    <i vnpt-icon vSrc="/assets/list.png" [vSize]="'xs'"></i>
+                    <vnpt-select ngModel="lucy" vBorderless vAllowClear vPlaceHolder="Trạng thái">
+                      <vnpt-option vValue="jack" vLabel="Jack"></vnpt-option>
+                      <vnpt-option vValue="lucy" vLabel="Lucy"></vnpt-option>
+                      <vnpt-option vValue="disabled" vLabel="Disabled" vDisabled></vnpt-option>
+                    </vnpt-select>
+                  </div>
+                  <div vnpt-col [vXXl]="{ span: 9 }" [vXl]="{ span: 9 }" [vLg]="{ span: 9 }" [vMd]="{ span: 9 }"
+                    [vSm]="{ span: 12 }" [vXs]="{ span: 24 }">
+                    <i vnpt-icon vSrc="/assets/calendar.png" [vSize]="'xs'"></i>
+                    <vnpt-range-picker vBorderless vFormat="dd-MM-YYYY"></vnpt-range-picker>
+                  </div>
+                </div>
+              </vnpt-card>
+      
+              <vnpt-card [vBordered]="false">
+                <vnpt-card-meta vTitle="Bản đồ khu vực" class="oneui-card-head-title"></vnpt-card-meta>
+                <img vnpt-image width="100%" vSrc="/assets/image8.jpg" alt="Bản đồ khu vực" />
+              </vnpt-card>
+            </div>
+            <div vnpt-col vLg="10" vSm="24">
+              <vnpt-card [vBordered]="false">
+                <button vnpt-button [vType]="'primary'">Xem thống kê</button>
+              </vnpt-card>
+              <vnpt-card [vBordered]="false">
+                <vnpt-card-meta vTitle="Phản ánh trong tháng" class="oneui-card-head-title"></vnpt-card-meta>
+                <ng-template #chartContainer2></ng-template>
+              </vnpt-card>
+              <vnpt-card [vBordered]="false">
+                <vnpt-card-meta vTitle="Mức độ hài lòng của người dân" class="oneui-card-head-title"></vnpt-card-meta>
+                <ng-template #chartContainer1></ng-template>
+              </vnpt-card>
+            </div>
+          </div>
+          <div vnpt-row>
+            <div vnpt-col vSpan="24">
+              <vnpt-card [vBordered]="false">
+                <vnpt-card-meta vTitle="Thống kê chi tiết" class="oneui-card-head-title"></vnpt-card-meta>
+                <vnpt-table #rowSelectionTable vShowPagination vShowSizeChanger [vData]="listOfData"
+                  (vCurrentPageDataChange)="onCurrentPageDataChange($event)">
+                  <thead>
+                    <tr>
+                      <th [vChecked]="checked" [vIndeterminate]="indeterminate" (vCheckedChange)="onAllChecked($event)"></th>
+                      <th>Mã Sự Cố</th>
+                      <th>Người báo</th>
+                      <th>Ngày báo</th>
+                      <th>Trạng thái</th>
+                      <th>Tùy chọn</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of rowSelectionTable.data">
+                      <td [vChecked]="setOfCheckedId.has(data.id)" [vDisabled]="data.disabled"
+                        (vCheckedChange)="onItemChecked(data.id, $event)"></td>
+                      <td>
+                        <a>{{ data.data_id }}</a>
+                      </td>
+                      <td>
+                        <a>{{ data.name }}</a>
+                      </td>
+                      <td>{{ data.created_at | date: "hh:mm dd/MM/yyyy" }}</td>
+                      <td>
+                        <ng-container [ngSwitch]="data.status">
+                          <vnpt-badge *ngSwitchCase="1" vStatus="success" vText="Thành công"></vnpt-badge>
+                          <vnpt-badge *ngSwitchCase="2" vStatus="processing" vText="Đang xử lý"></vnpt-badge>
+                          <vnpt-badge *ngSwitchCase="0" vStatus="error" vText="Lỗi"></vnpt-badge>
+                          <vnpt-badge *ngSwitchDefault vStatus="default" vText="Đã hủy"></vnpt-badge>
+                        </ng-container>
+                      </td>
+                      <td>
+                        <button vnpt-button vType="text" vnpt-tooltip vTooltipTitle="Xem chi tiết">
+                          <i vnpt-icon vType="View" [vColor]="'primary'"></i>
+                        </button>
+                        <button vnpt-button vType="text" vnpt-tooltip vTooltipTitle="Sửa">
+                          <i vnpt-icon vType="Edit" [vColor]="'warning'"></i>
+                        </button>
+                        <button vnpt-button vType="text" vnpt-tooltip vTooltipTitle="Xóa">
+                          <i vnpt-icon vType="Cancel" [vColor]="'danger'"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </vnpt-table>
+              </vnpt-card>
+            </div>
+          </div>
+    </vnpt-layout>
+</vnpt-page>
